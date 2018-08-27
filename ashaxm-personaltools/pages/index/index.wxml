@@ -1,0 +1,22 @@
+<view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-headImgCls" src="{{userInfo.image}}" background-size="cover"></image>
+      <text class="userinfo-nicknameCls">{{userInfo.nickName}}</text>
+    </block>
+</view>
+
+<view class="itemCls" style="margin-top: 2rem;" bindtap="seeDailyCost">
+	<text>记账本</text>
+</view>
+<view class="itemCls" bindtap="seeJiuJie">
+	<text>告别纠结</text>
+</view>
+<view class="itemCls" bindtap="seeNotice">
+	<text>备忘录</text>
+</view>
+<view class="itemCls"  bindtap="seeMyInfo">
+	<text>联系我们</text>
+</view>
+
+

@@ -1,0 +1,20 @@
+<view style="padding: 0.5rem;">
+	<text style="font-size: 14px;" decode="{{true}}">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用说明：新建需要提醒的事件，系统会自动在指定的时间自动给您微信号发送对应的服务通知。
+	</text>
+	<button style="margin: 0.5rem 0rem" type="primary" bindtap="recordPrice">马上新建</button>	
+
+
+	<view class="item-box">
+	  <view class="items">
+	    <view wx:for="{{list}}" wx:key="{{index}}" class="item">
+	      <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">
+	      <image class="item-icon" mode="widthFix" src="{{item.icon}}"></image>{{item.txt}}</view>
+	      <view data-index="{{index}}" bindtap= "delItem" class="inner del">删除</view>
+	    </view>
+	  </view>
+	</view>
+
+</view>
+
+

@@ -1,0 +1,15 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/jiujie/jiujie",
+    "pages/notice/notice",
+    "pages/newNotice/newNotice",
+    "pages/cost/cost"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "私人小秘书",
+    "navigationBarTextStyle":"black"
+  }
+}

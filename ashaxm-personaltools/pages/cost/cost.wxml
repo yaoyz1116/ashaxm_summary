@@ -1,0 +1,50 @@
+<!--logs.wxml-->
+<view class="container">
+	<view class="section">  
+	  <picker mode="date" value="{{date}}" start="2018-01-01" end="2030-01-01" bindchange="bindDateChange">  
+	    <view class="picker">  
+	      日期: {{dates}}  
+	    </view>  
+	  </picker>  
+	</view>  
+	<view class="section" >  
+	  <picker bindchange="bindPickerChange" value="{{index}}" range="{{objectArray}}" mode = "selector">  
+	    <view class="picker">  
+	      星期：{{objectArray[index]}}  
+	    </view>  
+	  </picker>  
+	</view>  
+	<view  class="section" >  
+	  <input type="digit" confirm-type="done" bindinput="bindpriceinput" value="{{price}}" placeholder="输入花费的金额" />
+	</view>  
+	<view  class="btn" >
+		<button type="primary" bindtap="recordPrice"> 添加 </button>	
+	</view>
+
+	<view>
+		<text class="msgcls">点击对应日期，删除消费记录</text><br />
+		<text class="msgcls">点击对应金额，修改消费金额</text>
+	</view>
+	<view>
+		<text class="costexplaincls">总共花费：{{sumprice}}</text>
+		<text class="costexplaincls">每人花费：{{avgprice}}</text>
+	</view>
+	<view>
+	  <block>
+		  <text class="col-6 thcls">日期</text>
+		  <text class="col-3 thcls">星期</text>
+		  <text class="col-3 thcls">金额</text>
+	  </block>	  
+	  <block wx:for="{{viewpricelist}}" wx:key="unique" wx:for-item="pricelist">
+	    <text class="col-6 tdcls" data-dailyid="{{pricelist.id}}" data-dailydate="{{pricelist.costdate}}"  bindtap="deleteCost">{{pricelist.costdate}}</text>
+	    <text class="col-3 tdcls">{{pricelist.costweek}}</text>
+	    <text class="col-3 tdcls redcls" data-dailyid="{{pricelist.id}}" data-dailydate="{{pricelist.costdate}}" data-dailyprice="{{pricelist.costprice}}" bindtap="updateCost">{{pricelist.costprice}}</text>
+	  </block>
+	</view>
+
+	<modal hidden="{{hiddenUpdate}}" title="修改金额" confirm-text="确定" cancel-text="取消" bindcancel="cancelUpdate" bindconfirm="confirmUpdate">
+		<text class="updatecostcls">修改<text class="redcls">{{updatepredate}}</text>的金额<text class="redcls">{{updatepreprice}}</text>为</text>
+		<input type="number" placeholder="输入修改金额" value="{{updateprice}}" bindinput="bindupdatepriceinput"/>
+	</modal>  
+
+</view>

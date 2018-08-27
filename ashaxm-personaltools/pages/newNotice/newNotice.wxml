@@ -1,0 +1,31 @@
+<view style="font-size: 14px;padding: 1rem 0.5rem">
+	新建成功之后，系统会自动在指定的时间内发送微信服务通知提醒。
+</view>
+<form bindsubmit="saveNotice" report-submit='true' >
+  <view class="myRow" style="padding-top: 20rpx;padding-bottom: 20rpx;border-bottom:1px solid #ccc;height: 50rpx;width: 94%;margin: 0 auto;">
+  	<view class="myCol-3 myLargeText">标题</view>
+  	<view class="myCol-9 myLargeText">  <input placeholder="请输入事件名称"  bindinput="changeTitle" /></view>
+  </view>
+  <view class="myRow" style="padding-top: 20rpx;padding-bottom: 20rpx;border-bottom:1px solid #ccc;height: 150rpx;width: 94%;margin: 0 auto;">
+  	<view class="myCol-3 myLargeText">描述</view>
+  	<view class="myCol-9 myLargeText" style="margin-bottom: 1rem;">  <textarea style="height:150rpx;width: 100%;" placeholder="请输入事件的描述（没有可不填）" bindinput="changeDesc" /></view>
+  </view>
+  <view class="myRow" style="padding-top: 20rpx;padding-bottom: 20rpx;border-bottom:1px solid #ccc;height: 50rpx;width: 94%;margin: 0 auto;font-size: 16px;">  
+    <picker mode="date" value="{{dates}}" start="2018-01-01" end="2030-01-01" bindchange="bindDateChange">  
+      <view class="picker">  
+        提醒日期   {{dates}}  
+      </view>  
+    </picker>  
+  </view>
+  <view class="myRow" style="padding-top: 20rpx;padding-bottom: 20rpx;border-bottom:1px solid #ccc;height: 50rpx;width: 94%;margin: 0 auto;font-size: 16px;">  
+    <picker mode="time" value="{{times}}" start="00:00" end="23:59" bindchange="bindTimeChange">  
+      <view class="picker">  
+        提醒时间   {{times}}  
+      </view>  
+    </picker>  
+  </view>
+
+  <view class="myRow" style="width: 60vw;margin: 0 auto;margin-top: 100rpx">
+  	<button disabled="{{btnDisabled}}"  type="primary" form-type="submit">确定</button>
+  </view>
+</form>

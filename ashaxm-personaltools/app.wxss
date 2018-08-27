@@ -1,0 +1,51 @@
+.myRow{
+	width:100vw;
+	padding-bottom: 2rem;
+}
+.myCol-1{
+	width:8.3%;
+	float:left;
+}
+.myCol-2{
+	width:16%;
+	float:left;
+}
+.myCol-3{
+	width:25%;
+	float:left;
+}
+.myCol-4{
+	width:33.3%;
+	float:left;
+}
+.myCol-6{
+	width:50%;
+	float:left;
+}
+.myCol-8{
+	width:66.6%;
+	float:left;
+}
+.myCol-9{
+	width:75%;
+	float:left;
+}
+.myCol-10{
+	width:84%;
+	float:left;
+}
+.myTextCenter{
+	text-align: center;
+}
+.myTextRight{
+	text-align: right;
+}
+.myLargeText{
+	font-size: 16px;
+}
+.myMediumText{
+	font-size: 14px;
+}
+.mySmallText{
+	font-size: 12px;
+}
