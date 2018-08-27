@@ -1,0 +1,29 @@
+{
+  "pages":[  
+    "pages/cost/cost",
+    "pages/apishow/apishow",
+    "pages/index/index"    
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "个人助手",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color":"#666666",
+    "selectedColor":"#f10b2e",
+    "list": [{
+      "pagePath": "pages/cost/cost",
+      "text": "开销计算",
+      "iconPath": "./imgs/1.png",
+      "selectedIconPath": "./imgs/3.png"
+    }, {
+      "pagePath": "pages/index/index",
+      "text": "告别纠结",
+      "iconPath": "./imgs/2.png",
+      "selectedIconPath": "./imgs/4.png"
+    }]
+  }
+}
+

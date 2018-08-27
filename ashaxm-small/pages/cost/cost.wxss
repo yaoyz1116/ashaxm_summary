@@ -1,0 +1,79 @@
+.section{
+   background:orange;
+   margin:20rpx;
+   padding:20rpx
+}
+
+.btn{
+   margin:20rpx 5rpx;
+   padding:20rpx
+}
+
+.col-6{
+	float: left;
+	width: 30%;
+	padding: 1rem;
+	text-align: center;
+}
+
+.col-3{
+	float: left;
+	width: 18%;
+	padding: 1rem;
+	text-align: center;
+}
+
+.thcls{
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.tdcls{
+	font-size: 12px;
+}
+
+.redcls{
+	color: red;
+}
+
+.costexplaincls{
+   margin:0 auto;
+   color: red;
+   font-size: 18px;
+   font-weight: 700;
+   text-align: center;
+   width: 50%;
+   display: block;
+   float: left;
+}
+
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  margin-left:50rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+  float:right;
+  margin-right:100rpx;
+  margin-top:80rpx;
+}
+
+.updatecostcls{
+  margin-bottom: 1rem;
+  font-weight: 700;
+  display: block;
+}
+
+.msgcls{
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: red;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}

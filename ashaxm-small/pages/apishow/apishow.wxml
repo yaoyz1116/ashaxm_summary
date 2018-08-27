@@ -1,0 +1,59 @@
+<view class="container">
+
+	<text>组件的相关练习</text>
+ 	<view class="autocls" hover-class="hoverviewcls" >view组件，可以设置按下去的样式</view>
+ 	<scroll-view scroll-y style="height: 200px;" bindscrolltoupper="upper" bindscrolltolower="lower">
+    	<view id="green" class="scroll-view-item bc_green"></view>
+    	<view id="red"  class="scroll-view-item bc_red"></view>
+    	<view id="yellow" class="scroll-view-item bc_yellow"></view>
+    	<view id="blue" class="scroll-view-item bc_blue"></view>
+  	</scroll-view>
+
+  	<swiper indicator-dots="{{false}}" indicator-color="rgba(255,255,255,1)"  autoplay="true" interval="2000" duration="1000" circular="true">
+	  <block wx:for="{{imgUrls}}">
+	    <swiper-item>
+	      <image src="{{item}}" class="slide-image"/>
+	    </swiper-item>
+	  </block>
+	</swiper>
+
+	<movable-area style="height: 200px; width: 100%; background: red;">
+    	<movable-view style="height: 50px; width: 50px; background: blue;" x="100" y="100" direction="all" out-of-bounds="true">
+    	</movable-view>
+    </movable-area>
+
+	<video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400" controls="{{false}}">
+	  <cover-view class="controls">
+	    <cover-view class="play" bindtap="play">
+	      <cover-image class="img" src="/imgs/1.png" />
+	    </cover-view>
+	    <cover-view class="pause" bindtap="pause">
+	      <cover-image class="img" src="/imgs/2.png" />
+	    </cover-view>
+	    <cover-view class="time">00:00</cover-view>
+	  </cover-view>
+	</video>
+
+	<view class="group">
+	  <block wx:for="{{iconType}}">
+	    <icon type="{{item}}" size="40"/>
+	  </block>
+	</view>
+
+	<text selectable="true">text文本是否可选</text>
+
+	<progress percent="40" show-info stroke-width="20"  activeColor="red" active="true"/>
+	
+	<audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls loop></audio>
+	
+	<image src="http://content.fengchuanba.com/file/default/material/mt//20171012133623.jpg" mode="scaleToFill"></image>
+
+	<!-- <camera device-position="back" flash="off" style="width: 100%; height: 300px;"></camera>
+	<button type="primary" bindtap="takePhoto">拍照</button>
+	<view>预览</view>
+	<image mode="widthFix" src="{{camerasrc}}"></image> -->
+
+	<map id="map" longitude="113.324520" latitude="23.099994" scale="14" controls="{{controls}}" bindcontroltap="controltap"  bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 300px;"></map>
+
+
+</view>

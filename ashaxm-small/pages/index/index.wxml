@@ -1,0 +1,48 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="topview">
+     <input type="text" placeholder="输入内容" bindinput="changeaimcontent" value="{{inputvalue}}" class="inputcls" />
+     <button type="primary" bindtap="addaimcontent" size="mini" class="btncls">确定添加</button>
+  </view>
+
+  <view class="boxcls">
+    <view class="plate-wrap-box">
+      <view class="plate-border" animation="{{ aniData }}">
+        <!-- 转盘以及文字 -->
+        <view class="plate-wrap">
+          <view class="plate-box" wx:for="{{ contentarray }}" wx:key="" style="top:-{{ (contentarray.length - 6)<=2?(36+4*(contentarray.length - 6)):50 }}rpx;transform-origin: 50% {{ (contentarray.length - 6) <=2?(256+4*(contentarray.length - 6)):270 }}rpx;border-top: {{ (contentarray.length - 6) <=2?(256+4*(contentarray.length - 6)):270 }}rpx solid #{{ index % 2==0?'ffeebe':'ffbb04' }};transform:translate(-50%,0) rotate({{ 360 / contentarray.length * ( index )}}deg);border-left: {{ 440 / contentarray.length * 2 }}rpx solid transparent;border-right: {{ 440 / contentarray.length * 2 }}rpx solid transparent;">
+            <text class="text-box" bindtap="heool" style="color:#{{ index % 2==0?'ffbb04':'ffeebe' }}">{{ item }}</text>
+          </view>
+        </view>
+        <!-- 边框的小灯泡 -->
+        <view class="plate-wrap plate-light">
+          <view class="plate-box" wx:for="{{ contentarray }}" wx:key="" style="top:-{{ (contentarray.length - 6)<=2?(44+4*(contentarray.length - 6)):60 }}rpx; transform-origin: 50% {{ (contentarray.length - 6) <=2?(294+4*(contentarray.length - 6)):310 }}rpx;border-top: {{ (contentarray.length - 6) <=2?(294+4*(contentarray.length - 6)):310 }}rpx solid transparent;transform:translate(-50%,0) rotate({{ 360 / contentarray.length * ( index )}}deg);border-left: {{ 500 / contentarray.length * 2 }}rpx solid transparent;border-right: {{ 500 / contentarray.length * 2 }}rpx solid transparent;">
+            <view class="bulb"></view>
+          </view>
+        </view>
+      </view>
+      <view class="plate-btn-wrap" bindtap="startRollTap">
+        <view class="plate-btn-box">
+          <view class="plate-inner-btn">
+            <text>开始
+                  选择</text>
+          </view>
+        </view>
+      </view>
+      <view class="lottery-plate-shadow"></view>
+    </view>
+  </view>
+
+  <view class="tipview">
+      滚蛋吧，纠结君！
+  </view>
+  <view class="tip2view">
+      点击按钮可以删除对应选项
+  </view>
+  <view wx:for="{{contentarray}}" wx:key="" wx:for-index="idx" wx:for-item="item" class="centercls" >
+    <button wx:if="{{item != '再来一次'}}" type="warn" bindtap="removeaimcontent" id="{{idx}}"  size="mini" class="btncls">{{item}}</button>
+  </view>
+  <view class="bocls">
+    Contact me with WeChat：<text class="bocls2">yaoyuzhao000</text>
+  </view>
+</view>
