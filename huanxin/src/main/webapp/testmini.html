@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>测试微信小程序</title>
+</head>
+<body>
+<h1>测试微信小程序</h1>
+
+
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript">
+console.log("-----start-----");
+var miniShareTitle = "我是标题";
+var miniShareImg = "http://content.fengchuanba.com/file/default/material/logo/danghui.jpg"
+wx.miniProgram.postMessage({ data: {miniTitle: miniShareTitle,miniImg : miniShareImg} })
+console.log("end");
+</script>
+</body>
+</html>
+

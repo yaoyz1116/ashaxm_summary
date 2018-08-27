@@ -1,0 +1,22 @@
+<c3p0-config>
+    <default-config>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        
+        <property name="jdbcUrl">jdbc:mysql://127.0.0.1:3306/hxstore?autoReconnect=true&amp;failOverReadOnly=false&amp;zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8</property>
+        <property name="user">root</property>
+        <property name="password">root</property>
+        
+        <property name="minPoolSize">5</property>
+        <property name="maxPoolSize">50</property>
+        <property name="initialPoolSize">5</property>
+        <property name="maxIdleTime">25000</property>
+        <property name="acquireIncrement">1</property>
+        <property name="acquireRetryAttempts">30</property>
+        <property name="acquireRetryDelay">1000</property>
+        <property name="testConnectionOnCheckin">true</property>
+        <property name="automaticTestTable">c3p0testtable</property>
+        <property name="idleConnectionTestPeriod">18000</property>
+        <property name="checkoutTimeout">3000</property>
+        <property name="maxStatements">200</property>
+    </default-config>
+</c3p0-config>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>环新</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1 ,user-scalable=no,maximum-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link href="./assests/amazeui/amazeui.min.css" rel="stylesheet"> 
+
+</head>
+<body>
+
+<!-- 登录页面    start -->
+<div style="width: 100vw;height: 100vh;background-color: rgb(255,255,255,0.6);display: none;" id="loginPage">
+	<h1 style="text-align: center;color: orange;margin-top: 15vh;">环新集团仓库管理系统</h1>
+	<form class="am-form am-form-horizontal" style="padding: 10vh 20vw;">
+	  <div class="am-form-group">
+	    <label for="doc-ipt-3" class="am-u-sm-2 am-form-label">工号</label>
+	    <div class="am-u-sm-10">
+	      <input type="text" id="usercode" placeholder="请输入工号">
+	    </div>
+	  </div>
+	
+	  <div class="am-form-group">
+	    <label for="doc-ipt-pwd-2" class="am-u-sm-2 am-form-label">密码</label>
+	    <div class="am-u-sm-10">
+	      <input type="password" id="password" placeholder="设置一个密码吧">
+	    </div>
+	  </div>
+	
+	  <div class="am-form-group" style="margin-top: 100px;">
+	    <div class="am-u-sm-11 am-u-sm-offset-1">
+	      <button type="button" onclick="userLogin()" class="am-btn am-btn-warning am-btn-block">登录</button>
+	    </div>
+	  </div>
+	</form>
+</div>
+<!-- 登录页面    end -->
+
+<!-- 侧边栏    start -->
+<div id="cebianDiv" style="width: 200px;height: 100vh;background-color: black;color: #999;position: fixed;left: 0px;background: #333;padding-left: 40px;display: none;">
+	<div class="yuangongcls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" id="shenqing" onclick="chenjianLogin()">借用申请</div>
+	<div class="kuguancls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" onclick="showManagePart()" id="jieyongdiv">借用审批</div>
+	<div class="kuguancls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" onclick="showInsertStockPart()" id="tuihuandiv">工装退还</div>
+	<div class="kuguancls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" id="ruku" onclick="showRukuDiv()">工装入库</div>
+	<div class="kuguancls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" id="baofei" onclick="showBaofeiDiv()">工装报废</div>
+	<div class="kuguancls" style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" id="liushui" onclick="showLiushui()">流水查询</div>
+	<div style="height: 2rem;font-size: 20px;font-weight: 600;padding-top: 2rem;padding-bottom: 3rem;" id="xinxi" onclick="showMyInfo()">我的信息</div>
+</div>
+<!-- 侧边栏    end -->
+<!-- 一级页面    start -->
+<section id="stackDiv" class="onePage" style="display: none;margin-left: 200px;">
+	
+	<div class="am-g" style="padding-top: 2rem;">
+	  <div class="am-u-lg-12">
+	    <div class="am-input-group">
+	      <input id="aimSearchPart" type="text" class="am-form-field" placeholder="输入工装名称或代码搜索">
+	      <span class="am-input-group-btn">
+	        <button class="am-btn am-btn-default" type="button" onclick="searchPart()">搜索</button>
+	      </span>
+	    </div>    
+		<ul class="am-list am-list-static am-list-border" id="stackPartsUL">
+		  	
+	    </ul>
+	  </div>
+	</div>
+	
+</section>
+
+<section id="manageDiv" class="onePage" style="display: none;margin-left: 200px;">
+	<ul class="am-list am-list-static am-list-border" id="dealPartUI">
+	  	
+    </ul>
+</section>
+
+<section id="insertStackDiv" class="onePage" style="display: none;margin-left: 200px;">
+	<ul class="am-list am-list-static am-list-border" id="backPartUI">
+	  	
+    </ul>
+</section>
+
+
+<section id="rukuDiv" class="onePage" style="display: none;margin-left: 200px;">
+	<div class="am-g" style="padding-top: 2rem;">
+	  <div class="am-u-lg-6">
+	  	<button type="button" onclick="insertNewPart()" class="am-btn am-btn-primary am-btn-block">新工装入库</button>
+	  </div>
+	  <div class="am-u-lg-12" style="margin-top: 1rem;">
+	    <div class="am-input-group">
+	      <input id="ruku_searchCode" type="text" class="am-form-field" placeholder="请输入工装代码查询">
+	      <span class="am-input-group-btn">
+	        <button class="am-btn am-btn-default" type="button" onclick="searchRukuPart()">搜索</button>
+	      </span>
+	    </div>    
+		<ul class="am-list am-list-static am-list-border" id="rukuUI">
+		  	
+	    </ul>
+		
+	  </div>
+	</div>
+</section>
+
+<section id="baofeiDiv" class="onePage" style="display: none;margin-left: 200px;">
+	<div class="am-g" style="padding-top: 2rem;">
+	  <div class="am-u-lg-12">
+	    <div class="am-input-group">
+	      <input id="baofei_searchCode" type="text" class="am-form-field" placeholder="请输入工装代码查询">
+	      <span class="am-input-group-btn">
+	        <button class="am-btn am-btn-default" type="button" onclick="searchBaofeiPart()">搜索</button>
+	      </span>
+	    </div>    
+		<ul class="am-list am-list-static am-list-border" id="baofeiUI">
+		  	
+	    </ul>
+		
+	  </div>
+	</div>
+</section>
+
+<section id="liushuiDiv" class="onePage" style="display: none;margin-left: 200px;">
+	<div class="am-g">
+		<div class="am-u-lg-12" style="text-align: center;">	
+			<h1 style="padding-top: 5rem;">工装明细报表下载</h1>
+		</div>
+	</div>
+	
+	<div class="am-alert am-alert-danger" id="my-alert-date" style="display: none">
+	  <p>开始日期应小于结束日期！</p>
+	</div>
+	<div class="am-g">
+	  <div class="am-u-sm-5 am-u-sm-offset-2">
+	    <button type="button" class="am-btn am-btn-default am-margin-right" id="my-start">开始日期</button><span id="my-startDate">2018-01-01</span>
+	  </div>
+	  <div class="am-u-sm-5">
+	    <button type="button" class="am-btn am-btn-default am-margin-right" id="my-end">结束日期</button><span id="my-endDate">2018-02-01</span>
+	  </div>
+	</div>
+	
+	<div class="am-g" style="margin-top: 8rem;">
+	  <div class="am-u-sm-6 am-u-sm-offset-3">
+	  	<button type="button" onclick="downLoadExcel(0)" class="am-btn am-btn-warning am-btn-block">下载指定日期的流水</button>
+	  </div>
+	   <div class="am-u-sm-3">&nbsp;</div>
+	</div>
+	<div class="am-g" style="margin-top: 3rem;">
+	  <div class="am-u-sm-6 am-u-sm-offset-3">
+	  	<button type="button" onclick="downLoadExcel(1)" class="am-btn am-btn-danger am-btn-block">下载全部流水</button>
+	  </div>
+	  <div class="am-u-sm-3">&nbsp;</div>
+	</div>
+</section>
+
+<section id="myinfoDiv" style="display: none;margin-left: 200px;padding-top: 50px;">
+	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+	  <div class="am-u-sm-3">姓名</div>
+	  <div class="am-u-sm-9" id="myinfo_name"></div>
+	</div>
+	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+	  <div class="am-u-sm-3">工号</div>
+	  <div class="am-u-sm-9" id="myinfo_code"></div>
+	</div>
+	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+	  <div class="am-u-sm-3">职责</div>
+	  <div class="am-u-sm-9" id="myinfo_type"></div>
+	</div>
+	<div class="am-g" style="padding-top: 5rem;padding-bottom: 1rem;">
+	  <div class="am-u-sm-6 am-u-sm-offset-3">
+	  	<button type="button" onclick="userLogout()" class="am-btn am-btn-warning am-btn-block">退出登录</button>
+	  </div>
+	</div>
+	<div class="am-g" style="padding-top: 5rem;padding-bottom: 1rem;">
+	  <div class="am-u-sm-6 am-u-sm-offset-3">
+	  	<button type="button" onclick="cgpwd()" class="am-btn am-btn-default am-btn-block">修改密码</button>
+	  </div>
+	</div>
+</section>
+
+<!-- 一级页面  end -->
+
+<!-- 警告框    start -->
+<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+  <div class="am-modal-dialog">
+    <div class="am-modal-hd">提示</div>
+    <div class="am-modal-bd" id="my-alert-content">
+      
+    </div>
+    <div class="am-modal-footer">
+      <span class="am-modal-btn">确定</span>
+    </div>
+  </div>
+</div>
+<!-- 警告框    end -->
+
+<!-- 车间借用    start -->
+<div class="am-popup" id="my-popup-borrow">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title" id="part_detail_kuguanTitle">借用详情</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+    	<input type="hidden" id="part_detail_id">
+    	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装名称</div>
+		  <div class="am-u-sm-8" id="part_detail_name"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装代码</div>
+		  <div class="am-u-sm-8" id="part_detail_code"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格一</div>
+		  <div class="am-u-sm-8" id="part_detail_val1"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格二</div>
+		  <div class="am-u-sm-8" id="part_detail_val2"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">现有库存</div>
+		  <div class="am-u-sm-8" id="part_detail_num"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工序</div>
+		  <div class="am-u-sm-8" id="part_detail_process"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">库位</div>
+		  <div class="am-u-sm-8" id="part_detail_storage"></div>
+		</div>
+		<div class="am-g kuguanNoSee" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用人工号</div>
+		  <div class="am-u-sm-8" id="part_detail_user"></div>
+		</div>
+		<div class="am-g kuguanNoSee" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用数量</div>
+		  <div class="am-u-sm-8">
+		  	<input type="number" id="part_detail_aimNum" placeholder="请输入本次借用数量">
+		  </div>
+		</div>
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;" class="kuguanNoSee">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="confirmBorrow()">确认借用</button>
+		</div>
+		<div style="padding: 2rem 0.5rem 1rem 0.5rem;display: none;" class="kuguanSee">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="closeBorrow()">关闭</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 车间借用    end -->
+
+<!-- 库管确认框    start -->
+<div class="am-popup" id="my-popup">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title">借用详情</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+    	<input type="hidden" id="popup_id">
+    	<input type="hidden" id="popup_partId">
+    	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装名称</div>
+		  <div class="am-u-sm-8" id="popup_partname"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">现有库存</div>
+		  <div class="am-u-sm-8" id="popup_prenum"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用人科室</div>
+		  <div class="am-u-sm-8" id="popup_borrowuserDepart"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用人</div>
+		  <div class="am-u-sm-8" id="popup_borrowuser"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用数量</div>
+		  <div class="am-u-sm-8" id="popup_num"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">经手库管</div>
+		  <div class="am-u-sm-8" id="popup_kuguan"></div>
+		</div>
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="kuguanConfirm()">确认借用</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 库管确认框    end -->
+
+<!-- 工装归还提示框    start -->
+<div class="am-popup" id="my-popup-back">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title">退还详情</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+    	<input type="hidden" id="popup_id_back">
+    	<input type="hidden" id="popup_partId_back">
+    	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装名称</div>
+		  <div class="am-u-sm-8" id="popup_partname_back"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">现有库存</div>
+		  <div class="am-u-sm-8" id="popup_prenum_back"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用人</div>
+		  <div class="am-u-sm-8" id="popup_borrowuser_back"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">借用数量</div>
+		  <div class="am-u-sm-8" id="popup_num_back"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">已还数量</div>
+		  <div class="am-u-sm-8" id="popup_num_backed"></div>
+		</div>
+	    <div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">经手库管</div>
+		  <div class="am-u-sm-8" id="popup_kuguan_back"></div>
+		</div>
+	    <div class="am-form-group am-form am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+	      <div class="am-u-sm-4" style="padding-top: 0.5rem;">本次退还</div>
+	      <div class="am-u-sm-8"><input type="number" id="popup_realnum_back" placeholder="请输入本次退还的数量"></div>
+	    </div>    
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="kuguanBack()">确认退还</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 工装归还提示框    end -->
+
+
+<!-- 修改密码    start -->
+<div class="am-popup" id="my-popup-cgpwd">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title">修改密码</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">    	
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">原密码</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="cgpwd_pre" placeholder="请输入旧密码">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">新密码</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="cgpwd_now" placeholder="请输入新密码">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">密码确认</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="cgpwd_preconfrim" placeholder="再次确认新密码">
+		  </div>
+		</div>
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="confirmCgpwd()">确认修改</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 修改密码    end -->
+
+<!-- 工装入库 && 报废   start -->
+<div class="am-popup" id="my-popup-ruku">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title" id="rukuOrbaofei">工装入库</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+    	<input type="hidden" id="part_ruku_id">
+    	<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装名称</div>
+		  <div class="am-u-sm-8" id="part_ruku_name"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装代码</div>
+		  <div class="am-u-sm-8" id="part_ruku_code"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格一</div>
+		  <div class="am-u-sm-8" id="part_ruku_val1"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格二</div>
+		  <div class="am-u-sm-8" id="part_ruku_val2"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">现有库存</div>
+		  <div class="am-u-sm-8" id="part_ruku_num"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工序</div>
+		  <div class="am-u-sm-8" id="part_ruku_process"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">库位</div>
+		  <div class="am-u-sm-8" id="part_ruku_storage"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">经手库管工号</div>
+		  <div class="am-u-sm-8" id="part_ruku_user"></div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装数量</div>
+		  <div class="am-u-sm-8">
+		  	<input type="number" id="part_ruku_aimNum" placeholder="请输入本次操作的工装数量">
+		  </div>
+		</div>
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="confirmRuku()">确认</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 工装入库  &&报废  end -->
+
+<!-- 新工装入库    start -->
+<div class="am-popup" id="my-popup-new">
+  <div class="am-popup-inner">
+    <div class="am-popup-hd">
+      <h4 class="am-popup-title">录入新工装</h4>
+      <span data-am-modal-close class="am-close">&times;</span>
+    </div>
+    <div class="am-popup-bd">
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装名称</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_name" placeholder="请输入新工装的名称">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装代码</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_code" placeholder="请输入新工装的代码">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格一</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_val1" placeholder="请输入新工装的规格一">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">规格二</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_val2" placeholder="请输入新工装的规格二">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工序代码</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_processcode" placeholder="请输入新工装的工序代码">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">库位代码</div>
+		  <div class="am-u-sm-8">
+		  	<input type="text" id="part_new_storagecode" placeholder="请输入新工装的库位代码">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">工装数量</div>
+		  <div class="am-u-sm-8">
+		  	<input type="number" id="part_new_num" placeholder="请输入新工装的数量">
+		  </div>
+		</div>
+		<div class="am-g" style="padding-top: 0.6rem;padding-bottom: 1rem;border-bottom: 1px solid #ccc;">
+		  <div class="am-u-sm-4">经手库管</div>
+		  <div class="am-u-sm-8" id="part_new_user"></div>
+		</div>
+	    <div style="padding: 2rem 0.5rem 1rem 0.5rem;">
+			<button type="button" class="am-btn am-btn-warning am-btn-block" onclick="confirmNewRuku()">确认</button>
+		</div>
+		  
+    </div>
+  </div>
+</div>
+<!-- 新工装入库    end -->
+
+
+<script src="//libs.fengchuanba.com/plugin/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+<script src="./assests/amazeui/amazeui.min.js"></script>
+<script src="./index.js" type="text/javascript"></script>
+</body>
+</html>
