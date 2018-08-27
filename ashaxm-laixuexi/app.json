@@ -1,0 +1,31 @@
+{
+  "pages":[
+    "pages/myinfo/myinfo",    
+    "pages/students/students",
+    "pages/newStudent/newStudent",
+    "pages/detailStudent/detailStudent",    
+    "pages/dance/dance",    
+    "pages/myClass/myClass" 
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "麦哲伦舞蹈学习中心",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color":"#666666",
+    "selectedColor":"#f10b2e",
+    "list": [{
+      "pagePath": "pages/students/students",
+      "text": "学生信息",
+      "iconPath": "./imgs/2.png",
+      "selectedIconPath": "./imgs/4.png"
+    }, {
+      "pagePath": "pages/myinfo/myinfo",
+      "text": "我的信息",
+      "iconPath": "./imgs/1.png",
+      "selectedIconPath": "./imgs/3.png"
+    }]
+  }
+}

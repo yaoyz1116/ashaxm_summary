@@ -1,0 +1,23 @@
+<view style="padding:0.5rem;margin-top:0.5rem;">
+
+
+<block wx:key="uniqueClass" wx:for="{{classArr}}">
+    <view class="itemViewCls" bindtap="changeClassId" style="background-color: #eee"  data-id="{{item.id}}">
+      <text class="itemTitleCls" data-id="{{item.id}}">{{item.name}}\n</text>
+    </view>
+    <view wx:if="{{item.id==nowClickClassId}}">
+    <block wx:key="unique" wx:for="{{students}}" wx:for-item="itemStudent">
+	    <view wx-if="{{itemStudent.classId==nowClickClassId}}" class="itemViewCls" bindtap="goStudentDetail" data-id="{{itemStudent.id}}">
+	      <text class="itemTitleCls" data-id="{{itemStudent.id}}">{{itemStudent.name}}\n</text>
+	      <text decode="{{true}}" class="itemSupportCls" data-id="{{itemStudent.id}}">剩余课时：{{itemStudent.spareTime}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+	      <text class="itemOppositionCls" data-id="{{itemStudent.id}}">已学课时：{{itemStudent.studyTime}}</text>    
+	    </view>
+	</block>
+	</view>
+</block>
+
+
+</view>
+
+
+

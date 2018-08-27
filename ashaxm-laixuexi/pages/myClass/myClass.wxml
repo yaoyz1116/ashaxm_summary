@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="topview">
+     <input type="text" placeholder="输入年级" bindinput="changeaimClass" value="{{inputvalue}}" class="inputcls" />
+     <button type="primary" bindtap="addaimClass" size="mini" class="btncls">确定添加</button>
+  </view>
+
+  <view class="tip2view">
+      点击按钮可以删除对应选项
+  </view>
+  <view wx:for="{{classArr}}" wx:key="" wx:for-index="idx" wx:for-item="item" class="centercls" >
+    <button type="warn" bindtap="removeClass" id="{{item.id}}"  size="mini" class="btncls">{{item.name}}</button>
+  </view>
+</view>

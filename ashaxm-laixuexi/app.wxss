@@ -1,0 +1,220 @@
+.myRow{
+	width:100vw;
+	padding-bottom: 2rem;
+  height: 1rem;
+}
+.myCol-1{
+	width:8.3%;
+	float:left;
+}
+.myCol-2{
+	width:16%;
+	float:left;
+}
+.myCol-3{
+	width:25%;
+	float:left;
+}
+.myCol-4{
+	width:33.3%;
+	float:left;
+}
+.myCol-6{
+	width:50%;
+	float:left;
+}
+.myCol-8{
+	width:66.6%;
+	float:left;
+}
+.myCol-9{
+	width:75%;
+	float:left;
+}
+.myCol-10{
+	width:84%;
+	float:left;
+}
+.myTextCenter{
+	text-align: center;
+}
+.myTextRight{
+	text-align: right;
+}
+.myLargeText{
+	font-size: 16px;
+}
+.myMediumText{
+	font-size: 14px;
+}
+.mySmallText{
+	font-size: 12px;
+}
+
+input,textarea{
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    color: #000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
+    transition: background 0.3s ease-in-out;
+    width: 95%;
+    height: 2rem;
+    padding-left: 0.3rem;
+}
+input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+}
+
+
+/*模态框的相关css代码 */
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 540rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 35%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 105rpx;
+  border-radius: 36rpx;
+}
+
+.modal-title {
+  padding-top: 50rpx;
+  font-size: 36rpx;
+  color: #030303;
+  text-align: center;
+}
+
+.modal-content {
+  padding: 50rpx 32rpx;
+}
+
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  height: 86rpx;
+  border-top: 1px solid #dedede;
+  font-size: 34rpx;
+  line-height: 86rpx;
+}
+
+.btn-cancel {
+  width: 50%;
+  color: #666;
+  text-align: center;
+  border-right: 1px solid #dedede;
+}
+
+.btn-confirm {
+  width: 50%;
+  color: #ec5300;
+  text-align: center;
+}
+
+
+
+
+
+/*聊天对话框*/
+
+.chat-thread .itemChat {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  border-radius: 10px;
+  max-width: 70vw;
+}
+
+.chat-thread .itemChat:before {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  content: '';
+}
+
+.chat-thread .itemChat:after {
+  position: absolute;
+  top: 15px;
+  content: '';
+  width: 0;
+  height: 0;
+  border-top: 15px solid rgba(25, 147, 147, 0.2);
+}
+
+.chat-thread .itemRight {
+  animation: show-chat-odd 0.15s 1 ease-in;
+  -moz-animation: show-chat-odd 0.15s 1 ease-in;
+  -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+  float: right;
+  margin-right: 40px;
+  background-color: #66CCFF
+}
+
+.chat-thread .itemRight:after {
+  border-right: 15px solid transparent;
+  right: -15px;
+}
+
+.chat-thread .itemLeft {
+  animation: show-chat-even 0.15s 1 ease-in;
+  -moz-animation: show-chat-even 0.15s 1 ease-in;
+  -webkit-animation: show-chat-even 0.15s 1 ease-in;
+  float: left;
+  margin-left: 40px;
+  background-color: #FFCCCC
+}
+
+.chat-thread .itemLeft:after {
+  border-left: 15px solid transparent;
+  left: -15px;
+}
+
+.chat-imgLeft{
+  height: 30px;
+  width: 30px;
+  float: left;
+  clear: both;
+}
+
+.chat-imgRight{
+  height: 30px;
+  width: 30px;
+  float: right;
+  clear: both;
+}
+
+.iconLeft{
+  animation: show-chat-even 0.15s 1 ease-in;
+  -moz-animation: show-chat-even 0.15s 1 ease-in;
+  -webkit-animation: show-chat-even 0.15s 1 ease-in;
+  float: left;
+  margin-left: 10px;
+}
+
+.iconRight{
+  animation: show-chat-odd 0.15s 1 ease-in;
+  -moz-animation: show-chat-odd 0.15s 1 ease-in;
+  -webkit-animation: show-chat-odd 0.15s 1 ease-in;
+  float: right;
+  margin-right: 10px;
+}

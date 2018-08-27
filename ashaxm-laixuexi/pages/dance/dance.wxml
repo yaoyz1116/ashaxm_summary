@@ -1,0 +1,14 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="topview">
+     <input type="text" placeholder="输入舞种" bindinput="changeaimDance" value="{{inputvalue}}" class="inputcls" />
+     <button type="primary" bindtap="addaimDance" size="mini" class="btncls">确定添加</button>
+  </view>
+
+  <view class="tip2view">
+      点击按钮可以删除对应选项
+  </view>
+  <view wx:for="{{danceArr}}" wx:key="" wx:for-index="idx" wx:for-item="item" class="centercls" >
+    <button type="warn" bindtap="removeDance" id="{{item.id}}"  size="mini" class="btncls">{{item.name}}</button>
+  </view>
+</view>

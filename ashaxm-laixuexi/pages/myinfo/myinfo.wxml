@@ -1,0 +1,20 @@
+<view class="userinfo">
+    <button wx:if="{{!hasAdminInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-headImgCls" src="{{adminInfo.headImg}}" background-size="cover"></image>
+      <text class="userinfo-nicknameCls">{{adminInfo.name}}</text>
+    </block>
+</view>
+
+<view class="itemCls" style="margin-top: 2rem;">
+	<text bindtap="addNewStudent">添加学生</text>
+</view>
+<view class="itemCls" style="margin-top: 2rem;">
+	<text bindtap="editDance">编辑舞种</text>
+</view>
+<view class="itemCls" style="margin-top: 2rem;">
+	<text bindtap="editClass">编辑年级</text>
+</view>
+
+
+

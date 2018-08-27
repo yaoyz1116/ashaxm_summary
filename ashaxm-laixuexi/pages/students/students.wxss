@@ -1,0 +1,15 @@
+.itemViewCls{
+	padding: 0.5rem 1rem;
+	border-top: 1px solid #ccc;
+}
+.itemTitleCls{
+	font-size: 14px;
+}
+.itemSupportCls{
+	color: #777777;
+	font-size: 12px;
+}
+.itemOppositionCls{
+	color: #777777;
+	font-size: 12px;
+}

@@ -1,0 +1,56 @@
+<view class="myRow" style="margin-top: 1rem;">
+	<view class="myCol-3 myTextCenter myLargeText">学生姓名</view>
+	<view class="myCol-9 myLargeText">  <input placeholder="请输入姓名"  bindinput="changeName" /></view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">学生性别</view>
+	<view class="myCol-9 myLargeText">
+		<radio-group class="radio-group" bindchange="changeSex">
+		  <label class="radio">
+		    <radio value="男" checked="{{true}}"/>男
+		  </label>
+		  <label class="radio">
+		    <radio value="女"/>女
+		  </label>
+		</radio-group>
+	</view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">年龄</view>
+	<view class="myCol-9 myLargeText">  <input placeholder="请输入年龄"  bindinput="changeAge" /></view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">父母信息</view>
+	<view class="myCol-9 myLargeText">  <input placeholder="请输入父母信息（姓名等）"  bindinput="changeParent" /></view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">联系方式</view>
+	<view class="myCol-9 myLargeText">  <input type="number" placeholder="请输入父母联系方式"  bindinput="changePhone" /></view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">所在年级</view>
+	<picker bindchange="bindClassChange" value="{{classIndex}}" range-key="name" range="{{classArr}}" mode = "selector">  
+	    <view class="picker">  
+	      {{classArr[classIndex].name}}  
+	    </view>  
+	</picker>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">所学舞种</view>
+	<picker bindchange="bindDanceChange" value="{{danceIndex}}" range-key="name" range="{{danceArr}}" mode = "selector">  
+	    <view class="picker">  
+	      {{danceArr[danceIndex].name}}  
+	    </view>  
+	</picker>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">缴纳费用</view>
+	<view class="myCol-9 myLargeText">  <input type="number" placeholder="本次缴费（单位：元）"  bindinput="changeCost" /></view>
+</view>
+<view class="myRow">
+	<view class="myCol-3 myTextCenter myLargeText">学习课时</view>
+	<view class="myCol-9 myLargeText">  <input type="number" placeholder="本次缴费对应的总课时"  bindinput="changeTime" /></view>
+</view>
+<view class="myRow" style="width: 60vw;margin: 2rem auto;">
+	<button disabled="{{btnDisabled}}"  type="primary" bindtap="saveStudent">确认添加</button>
+</view>
