@@ -1,30 +1,43 @@
 package com.ashaxm.top.basese.structure.tree;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class BinarySearchTree<T extends Comparable> {
+public class BinarySearchTree<T extends Comparable<?>> {
 	
 	BinaryTreeNode<T> root;
+	int size;
+	
 	public BinarySearchTree(BinaryTreeNode<T> root){
 		this.root = root;
+		this.size = 0;
 	}
 	public BinaryTreeNode<T> getRoot(){
 		return root;
 	}
+
 	public T findMin(){
-		return null;
+		BinaryTreeNode<T> temp = root;
+		while(temp.left!=null) {
+			temp = temp.left;
+		}
+		return temp.data;
 	}
 	public T findMax(){
-		return null;
+		BinaryTreeNode<T> temp = root;
+		while(temp.right != null)
+			temp = temp.right;
+		return temp.data;
 	}
 	public int height() {
 	    return -1;
 	}
 	public int size() {
-		return -1;
+		return size;
 	}
+	public boolean isEmpty() {
+		return size()==0;
+	}	
 	public void remove(T e){
 		
 	}

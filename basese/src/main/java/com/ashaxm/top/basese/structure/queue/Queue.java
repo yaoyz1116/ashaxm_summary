@@ -38,8 +38,7 @@ public class Queue<E> {
         last.next = null;
         if (isEmpty()) {
         	first = last;
-        }
-        else{
+        }else{
         	oldlast.next = last;
         }
         size++;
