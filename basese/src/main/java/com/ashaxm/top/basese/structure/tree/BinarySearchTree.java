@@ -3,7 +3,7 @@ package com.ashaxm.top.basese.structure.tree;
 import java.util.List;
 
 
-public class BinarySearchTree<T extends Comparable<?>> {
+public class BinarySearchTree<T extends Comparable<T>> {
 	
 	BinaryTreeNode<T> root;
 	int size;
@@ -38,9 +38,20 @@ public class BinarySearchTree<T extends Comparable<?>> {
 	public boolean isEmpty() {
 		return size()==0;
 	}	
-	public void remove(T e){
-		
+	public void remove(T t){
+		remove(root,t);
 	}
+	
+	private void remove(BinaryTreeNode<T> node, T t){
+		if(t.compareTo(node.data) > 0) {
+			remove(node.right,t);
+		}else if(t.compareTo(node.data) < 0) {
+			remove(node.left,t);
+		}else {
+			
+		}
+	}
+	
 	public List<T> levelVisit(){
 		
 		return null;
